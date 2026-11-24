@@ -134,6 +134,13 @@ class MainActivity : Activity() {
                     contentResolver.openInputStream(uri).use { stream ->
                         requireNotNull(stream) { "Tsy afaka namaky ilay rakitra." }.copyTo(dest.outputStream())
                     }
+                    if (dest.length() > 800L * 1024L * 1024L) {
+                        dest.delete()
+                        runOnUiThread {
+                            Toast.makeText(this, "Mihoatra ny 800 MB ilay modely. Safidio ny GGUF kely kokoa.", Toast.LENGTH_LONG).show()
+                        }
+                        return@execute
+                    }
                     modelPath = dest.absolutePath
                     prefs.edit().putString("model_path", modelPath).apply()
                     runOnUiThread {
