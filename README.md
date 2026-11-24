@@ -12,7 +12,7 @@ An Android-first, offline AI chat and coding app. The app runs local GGUF models
 ## Requirements
 - Android 8.0+ (API 26)
 - 64-bit ARM Android device (arm64-v8a)
-- A compatible GGUF instruction model. For the intended small-model setup, choose a quantized model whose file is below 800 MB. Actual speed and memory use depend on the device and model.
+- A GGUF instruction model using a ChatML-style conversation format. For the intended small-model setup, choose a quantized model whose file is below 800 MB. Actual speed and memory use depend on the device and model.
 
 ## Build
 Open this repository in Android Studio, or use the **Android APK** workflow under Actions. The workflow builds a debug APK and publishes it as an artifact.
