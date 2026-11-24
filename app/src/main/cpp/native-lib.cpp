@@ -27,7 +27,7 @@ Java_com_ninoh_aiagent_MainActivity_nativeGenerate(JNIEnv* env, jobject,
         } else {
             const llama_vocab* vocab = llama_model_get_vocab(model);
             std::string prompt(promptText);
-            std::string wrapped = "[INST] " + prompt + " [/INST]";
+            std::string wrapped = "<|im_start|>system\\n" + prompt + "<|im_end|>\\n<|im_start|>assistant\\n";
             int needed = -llama_tokenize(vocab, wrapped.c_str(), (int)wrapped.size(), nullptr, 0, true, true);
             std::vector<llama_token> tokens(needed + 8);
             int count = llama_tokenize(vocab, wrapped.c_str(), (int)wrapped.size(), tokens.data(), (int)tokens.size(), true, true);
